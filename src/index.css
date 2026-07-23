@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   AromaticCol — Design tokens (Tailwind v4 @theme)
+   "Lujo silencioso": beige, ivory, crema, arena, madera natural,
+   con negro/verde elegante solo como contraste puntual.
+   ============================================================ */
+@theme {
+  /* Fonts */
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+  /* Base clara — ivory / crema / arena */
+  --color-ivory: #fbf8f3;
+  --color-cream: #f5efe6;
+  --color-warm-white: #fefcf9;
+  --color-sand: #ebe1d3;
+  --color-sand-deep: #ddceb8;
+
+  /* Acento cálido — madera natural / terracota */
+  --color-clay-50: #f6ece3;
+  --color-clay-100: #ead6c4;
+  --color-clay-200: #dcb999;
+  --color-clay-300: #cf9d72;
+  --color-clay-400: #c0845a;
+  --color-clay-500: #a96c45;
+  --color-clay-600: #8a5636;
+
+  /* Contraste puntual — negro elegante / verde profundo */
+  --color-ink: #1c1915;
+  --color-ink-soft: #2a2620;
+  --color-forest: #2c3a2e;
+
+  /* Texto — gris cálido */
+  --color-espresso: #33302b;
+  --color-stone: #6b6259;
+  --color-stone-light: #938a7e;
+
+  /* Líneas / bordes */
+  --color-line: #e4dacb;
+
+  /* Easing editorial */
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-espresso);
+    font-family: var(--font-sans);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  /* Foco visible accesible en todos los elementos interactivos */
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-clay-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--color-clay-200);
+    color: var(--color-ink);
+  }
+}
+
+@layer utilities {
+  /* Eyebrow / kicker editorial */
+  .tracking-eyebrow {
+    letter-spacing: 0.22em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
